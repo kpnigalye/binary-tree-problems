@@ -14,17 +14,11 @@ class Node {
 }
 
 const depthFirstValues = (root)=>{
-    let arr = [];
-    depthFirst(root, arr);
-    return arr;
-}
-
-const depthFirst = (root,arr)=>{
     if (root === null)
-        return;
-    arr.push(root.val);
-    depthFirst(root.left, arr);
-    depthFirst(root.right, arr);
+        return [];
+    const leftVals = depthFirstValues(root.left);
+    const rightVals = depthFirstValues(root.right);
+    return [root.val, ...leftVals, ...rightVals]
 }
 
 /*
